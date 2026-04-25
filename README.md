@@ -51,4 +51,4 @@ Trabajo más reciente en mi [perfil de GitHub](https://github.com/Deivincci).
 
 ## Licencia
 
-[Apache License 2.0](LICENSE) — Copyright 2023 David Moral Peláez
+[Apache License 2.0](LICENSE) — Copyright 2023 Deivincci
