@@ -1,62 +1,54 @@
-![Imagen de la Pasarela de Pago](https://github.com/Deivincci/pasarela_pago_stripe/blob/main/pasarel.png?raw=true)
+# Pasarela de Pago con Stripe
 
-### Descripción Completa del Proyecto: Pasarela de Pago con Stripe
+> **Proyecto de aprendizaje (2023).** Primera integración con una pasarela de pagos real. Parte de mi recorrido autodidacta: aprender haciendo cosas pequeñas que funcionan.
 
-Este proyecto implementa una tienda en línea básica con integración de Stripe para pagos. Es ideal para aprender cómo configurar y trabajar con una pasarela de pagos en aplicaciones web modernas. La tienda incluye dos productos con precios fijos y permite a los usuarios realizar pagos a través de la API de Stripe en modo de prueba.
+Tienda en línea básica que integra la API de Stripe en modo test. Dos productos hardcoded, carrito simple, redirección a Stripe Checkout para completar el pago.
 
-#### Funcionalidades principales:
-1. **Interfaz intuitiva**: 
-   - Fondo visualmente atractivo.
-   - Productos con imágenes, precios y botón para agregar al carrito.
-   - Icono de carrito intuitivo para proceder al pago.
-2. **Gestión de pagos**:
-   - Uso de la API de Stripe para manejar sesiones de pago.
-   - Redirección automática a la página de Stripe para completar el pago.
-3. **Backend seguro y funcional**:
-   - Servidor Node.js con rutas para gestionar los datos del carrito y la comunicación con Stripe.
-   - Implementación de `CORS` para permitir solicitudes entre el cliente y el servidor.
+![Captura de la tienda](pasarel.png)
 
----
+## Stack
 
-### Requisitos previos
-1. Tener instalado **Node.js** en tu máquina.
-2. Contar con una cuenta de Stripe para obtener las claves API (puedes usar las claves de prueba proporcionadas por Stripe para fines educativos).
+- **Backend:** Node.js + Express
+- **Pagos:** Stripe API (modo test)
+- **Frontend:** HTML + JavaScript vanilla
+- **Otros:** body-parser, CORS
 
----
+## Funcionalidades
 
-### Pasos para ejecutar el proyecto localmente
+- Catálogo con dos productos (imagen, precio, botón añadir al carrito)
+- Carrito persistente en memoria del cliente
+- Sesión de pago vía Stripe Checkout
+- Redirección automática al gateway de Stripe
 
-1. **Clonar el repositorio**:
+## Cómo ejecutar
 
-   git clone https://github.com/tu_usuario/pasarela_pago_stripe.git
-   cd pasarela_pago_stripe
-Instalar dependencias: Este repositorio no incluye la carpeta node_modules por seguridad y prácticas recomendadas. Al instalar las dependencias, se generará automáticamente.
+Requisitos: Node.js instalado y una cuenta de Stripe (las claves de test sirven).
 
-Ejecuta el siguiente comando para instalar las dependencias necesarias:
-
+```bash
+git clone https://github.com/Deivincci/pasarela_pago_stripe.git
+cd pasarela_pago_stripe
 npm install express stripe body-parser cors
-Esto añadirá:
+```
 
-express: Framework para manejar el servidor.
-stripe: Librería oficial para integrarse con Stripe.
-body-parser: Para procesar solicitudes en formato JSON.
-cors: Para habilitar solicitudes entre dominios (cross-origin).
-Configurar las claves de Stripe:
+Edita `server.js` y sustituye `stripeSecretKey` y `stripePublicKey` por tus claves de Stripe (Dashboard → Developers → API keys).
 
-Abre el archivo server.js.
-Sustituye las claves de Stripe (stripeSecretKey y stripePublicKey) con tus propias claves de prueba o producción desde tu cuenta de Stripe.
-Iniciar el servidor: Ejecuta el siguiente comando:
-
+```bash
 node server.js
-Esto iniciará el servidor en http://localhost:3000.
+```
 
-Acceder a la tienda:
+Abre `http://localhost:3000` en el navegador.
 
-Abre tu navegador y navega a http://localhost:3000.
-Explora los productos, agrega al carrito y prueba el flujo de pagos con Stripe.
-Notas importantes:
-Este proyecto está configurado para funcionar en modo de prueba con Stripe. No se realizarán transacciones reales.
-Puedes modificar el código para añadir más productos o personalizar precios y funcionalidades.
-En un entorno de producción, asegúrate de:
-Usar claves de producción de Stripe.
-Implementar HTTPS para una comunicación segura.
+## Notas
+
+- Configurado para **modo test**: no se procesan transacciones reales.
+- Para producción haría falta: claves live de Stripe, HTTPS, validación server-side de precios, persistencia en BD, manejo de webhooks.
+
+## Contexto
+
+Este repo forma parte de mi camino aprendiendo desarrollo: empecé con integraciones básicas como esta y fui sumando complejidad con el tiempo. Lo conservo archivado como referencia histórica del recorrido.
+
+Trabajo más reciente en mi [perfil de GitHub](https://github.com/Deivincci).
+
+## Licencia
+
+[Apache License 2.0](LICENSE) — Copyright 2023 David Moral Peláez
